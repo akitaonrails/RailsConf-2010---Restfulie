@@ -1,0 +1,10 @@
+<% title "Apps" + (params[:state].nil? ? "" : " - #{params[:state].capitalize}") %>
+
+<% for app in @apps %>
+  <% div_for(app) do %>
+    <%= link_to image_tag("app_icons/" + app.image_uri, :size => "64x64"), app %>
+    <p><%= app.name %></p>
+  <% end %>
+<% end %>
+<div class="divider"></div>
+<p><%= link_to "New App", new_app_path %></p>

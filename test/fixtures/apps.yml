@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  author: MyString
+  image_uri: MyString
+  state: MyString
+  description: MyText
+
+two:
+  name: MyString
+  author: MyString
+  image_uri: MyString
+  state: MyString
+  description: MyText

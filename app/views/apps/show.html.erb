@@ -1,0 +1,16 @@
+<% title @app.name %>
+
+<%= image_tag("app_icons/" + @app.image_uri, :size => "128x128", :class => "icon") %>
+
+<h3><%=h @app.author %></h3>
+<p><%= (@app.price == 0.0 ? "Free" : number_to_currency(@app.price)) %></p>
+
+<pre>
+<%= @app.description %>
+</pre>
+
+<p>
+  <%= link_to "Edit", edit_app_path(@app) %> |
+  <%= link_to "Destroy", @app, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", apps_path %>
+</p>
