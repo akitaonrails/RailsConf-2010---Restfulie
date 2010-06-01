@@ -1,0 +1,15 @@
+member.values do |value|
+  value.id app.id
+  value.title app.name
+  value.updated_at app.updated_at.utc
+  value.state app.state
+  value.description app.description
+  value.price app.price
+end
+member.link "show", app_url(app) 
+if app.state == "new"
+  member.link "evaluate", evaluate_app_url(app)
+elsif app.state == "evaluating"
+  member.link "approve", approve_app_url(app)
+  member.link "decline", decline_app_url(app)
+end

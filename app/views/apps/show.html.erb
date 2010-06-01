@@ -3,14 +3,24 @@
 <%= image_tag("app_icons/" + @app.image_uri, :size => "128x128", :class => "icon") %>
 
 <h3><%=h @app.author %></h3>
-<p><%= (@app.price == 0.0 ? "Free" : number_to_currency(@app.price)) %></p>
+<p>Price: <strong><%= (@app.price == 0.0 ? "Free" : number_to_currency(@app.price)) %></strong></p>
+<p>Status: <strong><%= @app.state %></strong></p>
+
+<p>
+  <% case @app.state 
+     when "new" %>
+    <%= link_to "Evaluate", evaluate_app_path(@app), :method => :put %> |
+  <% when "evaluating" %>
+    <%= link_to "Approve", approve_app_path(@app), :method => :put %> |
+    <%= link_to "Decline", decline_app_path(@app), :method => :put %> |
+  <% end %>
+  <%= link_to "Edit", edit_app_path(@app) %> |
+  <%= link_to "Destroy", @app, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", apps_path %>
+</p>
 
 <pre>
 <%= @app.description %>
 </pre>
 
-<p>
-  <%= link_to "Edit", edit_app_path(@app) %> |
-  <%= link_to "Destroy", @app, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", apps_path %>
-</p>
+

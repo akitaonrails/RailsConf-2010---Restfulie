@@ -1,0 +1,13 @@
+When there is a new app
+Then move forward to evaluate it
+
+When there is an app being evaluated
+And the app passes the criteria
+Then approve the app
+
+When there is an app being evaluated
+And the app doesnt pass the criteria
+Then decline the app
+
+When there is still a new app
+Then restart the process

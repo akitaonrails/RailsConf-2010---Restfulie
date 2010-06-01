@@ -1,7 +1,9 @@
 class AppsController < ApplicationController
-  inherit_resources
-  respond_to :html, :xml
+  include Restfulie::Server::ActionController::Base
 
+  inherit_resources
+  respond_to :html, :xml, :atom
+  
   def list_new
     redirect_to apps_url(:state => "new")
   end
@@ -33,13 +35,16 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
     @app.send(@state.to_sym) if @state
     Rails.logger.debug("Hello #{@state}")
-    update!
+    update! do |success| 
+      success.atom { redirect_to @app }
+    end 
   end
 
   protected
 
   def collection
     state = params[:state] || "approved"
+    Rails.logger.debug params.inspect
     @apps = end_of_association_chain.all(:conditions => { :state => state} )
   end
 end

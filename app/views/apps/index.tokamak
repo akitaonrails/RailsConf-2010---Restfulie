@@ -1,0 +1,10 @@
+collection(@apps) do |collection|
+  collection.values do |values|
+    values.id apps_url
+    values.title "Apps List"
+    values.updated_at Time.now.utc
+  end
+  collection.members do |member, app|
+    partial "member", :locals => { :member => member, :app => app }
+  end
+end

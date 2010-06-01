@@ -1,3 +1,33 @@
 == Restfulie App Store Demo
 
-TODO
+Restfulie Demo using a sample scaffold app called "App Store". The idea being that there will be many apps registered that need to be evaluated and then approved or declined. Check out the 'app/model/app.rb' for the state machine.
+
+== Setup
+
+This app was tested with Ruby EE 1.8.7, Rails 2.3.8, Restfulie 0.8.1. Run 'rake reset' to create the database and the initial set of apps.
+
+== Running
+
+Run the Mechanize version:
+
+   ruby client/mechanize.rb
+
+Run the Active Resource version (you have to comment out the Restfulie include in the AppsController):
+
+   ruby client/active_resource.rb
+
+Run the basic Restfulie client version:
+
+   ruby client/restfulie_client.rb
+
+Run the Mikyung client:
+
+   ruby client/mikyung.rb
+
+== Disclaimer
+
+This is a very simple app designed to show case the many ways of interoperating with a Rails
+app. This is not a complete app, nor a complex workflow. The purpose is to serve as a simple
+demonstration app for RailsConf 2010.
+
+Author: @AkitaOnRails

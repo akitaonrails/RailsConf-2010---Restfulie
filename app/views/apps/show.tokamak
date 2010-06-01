@@ -1,0 +1,3 @@
+member(@app) do |member, album|
+  partial "member", :locals => { :member => member, :app => @app }
+end
