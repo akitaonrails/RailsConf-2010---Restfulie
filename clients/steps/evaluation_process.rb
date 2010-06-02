@@ -1,7 +1,11 @@
 def is_valid?(app)
-  @black_list.inject(false) do |result, word|
-    result = result || !(app.description =~ /#{word}/).nil?
+  result = true
+  @black_list.each do |word|
+    if app.description =~ /#{word}/
+      result = false
+    end
   end
+  result
 end
 
 When "there is a new app" do |resource|
