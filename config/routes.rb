@@ -4,9 +4,9 @@ ActionController::Routing::Routes.draw do |map|
     :list_approved => :get,
     :list_declined => :get 
   }, :member => {
-    :evaluate => :put,
-    :approve => :put,
-    :decline => :put
+    :evaluate => :post,
+    :approve => :post,
+    :decline => :post
   }
   map.root :controller => "apps"
 end

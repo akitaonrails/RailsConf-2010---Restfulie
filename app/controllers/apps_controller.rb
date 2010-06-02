@@ -34,7 +34,6 @@ class AppsController < ApplicationController
   def update
     @app = App.find(params[:id])
     @app.send(@state.to_sym) if @state
-    Rails.logger.debug("Hello #{@state}")
     update! do |success| 
       success.atom { redirect_to @app }
     end 

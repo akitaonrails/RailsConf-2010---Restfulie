@@ -5,15 +5,16 @@ def is_valid?(app)
 end
 
 When "there is a new app" do |resource|
-  if resource.entries.empty?
+  if @app || resource.entries.empty?
     false
   else
-    @app = resource.entries.first
+    @entries = resource.entries
+    @app = resource.entries.last
   end
 end
 
 Then "move forward to evaluate it" do |resource|
-  @app = @app.links.evaluate.follow.put!("")
+  @app = @app.links.evaluate.follow.post!("")
   resource
 end
 
@@ -25,9 +26,10 @@ When "the app passes the criteria" do |resource|
   is_valid?(@app)
 end
 
-Then "approve the app" do |resource, regex, mikyung|
-  @app = @app.links.approve.follow.put!("")
-  resource.entries.delete_if { |a| a.id == @app.id }
+Then "approve the app" do |resource|
+  @app.links.approve.follow.post!("")
+  @app = nil
+  resource.entries.pop
   resource
 end
 
@@ -36,16 +38,9 @@ When "the app doesnt pass the criteria" do |resource|
 end
 
 Then "decline the app" do |resource, regex, mikyung|
-  @app = @app.links.decline.follow.put!("")
-  resource.entries.delete_if { |a| a.id == @app.id }
+  @app.links.decline.follow.post!("")
+  @app = nil
+  resource.entries.pop
   resource
-end
-
-When "there is still a new app" do |resource|
-  resource.entries.size > 0
-end
-
-Then "restart the process" do |resource, regex, mikyung|
-  mikyung.start
 end
 
