@@ -1,5 +1,4 @@
 class App < ActiveRecord::Base
-  attr_accessible :name, :author, :image_uri, :price, :state, :description
   validates_presence_of :name, :author, :image_uri, :price, :state, :description
 
   state_machine :initial => :new do 

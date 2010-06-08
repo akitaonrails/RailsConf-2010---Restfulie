@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'restfulie'
 
-list = Restfulie.at("http://localhost:3000/apps/list_new").accepts("application/atom+xml").follow.get
+list = Restfulie.at("http://localhost:3000/apps/list_new").
+  accepts("application/atom+xml").follow.get
 
 app = list.entries.first
 app = app.links.evaluate.follow.post!("")

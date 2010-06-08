@@ -8,11 +8,20 @@ This app was tested with Ruby EE 1.8.7, Rails 2.3.8, Restfulie 0.8.1. Run 'rake 
 
 == Running
 
+For now, you have 4 options of consumer clients:
+
+* Mechanize
+* ActiveResource
+* Restfulie Client
+* Restfulie Mikyung Client
+
+For the Mechanize and ActiveResource to work, you will have to comment out the first 2 lines of 'app/controllers/apps_controller.rb' which is the 'include' method for Restfulie::Server and the 'respond_to' which includes :atom and :json. Then you need to uncomment the simpler 'respond_to' with just :html and :xml. And you also have to comment out the "config.gem 'restfulie'" declaration at the 'config/environment.rb' file.
+
 Run the Mechanize version:
 
    ruby client/mechanize.rb
 
-Run the Active Resource version (you have to comment out the Restfulie include in the AppsController):
+Run the Active Resource version:
 
    ruby client/active_resource.rb
 

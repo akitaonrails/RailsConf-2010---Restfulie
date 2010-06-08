@@ -5,7 +5,6 @@ class App < ActiveResource::Base
   self.site = "http://localhost:3000/"
 end
 
-#apps = App.get(:list_new)
 apps = App.find(:all, :params => { :state => "new" })
 
 first_app = apps.first

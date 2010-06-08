@@ -5,19 +5,14 @@ agent = Mechanize.new { |agent| agent.user_agent_alias = "Mac Safari" }
 
 agent.get("http://localhost:3000/apps/list_new")
 
-apps = agent.page.links.select { |link| link.href =~ /apps\/\d+/ }
+agent.click agent.page.link_with :href => /apps\/\d+/
 
-agent.click apps.first
-
-evaluate = agent.page.links.select { |link| link.text =~ /Evaluate/ }
-evaluate = evaluate.first if evaluate && !evaluate.empty?
+evaluate = agent.page.link_with :text => /Evaluate/
 
 agent.post evaluate.href, "" if evaluate
 
-approve = agent.page.links.select { |link| link.text =~ /Approve/ }
-approve = approve.first if approve && !approve.empty?
-decline = agent.page.links.select { |link| link.text =~ /Decline/ }
-decline = decline.first if decline && !decline.empty?
+approve = agent.page.link_with :text => /Approve/ 
+decline = agent.page.link_with :text => /Decline/
 
 if approve && decline
   description = agent.page.search("pre").text
