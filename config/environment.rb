@@ -20,7 +20,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "state_machine"
-  config.gem "restfulie"
+  config.gem "restfulie", :version => "0.8.1"
   config.gem "inherited_resources", :version => "1.0.6"
   config.gem "responders_backport"
 

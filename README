@@ -2,6 +2,10 @@
 
 Restfulie Demo using a sample scaffold app called "App Store". The idea being that there will be many apps registered that need to be evaluated and then approved or declined. Check out the 'app/model/app.rb' for the state machine.
 
+This is the demo app I showed at my talk "Making Rails really Restful with Restfulie" at RailsConf 2010. If you want to see the slides, there you go:
+
+  http://www.slideshare.net/akitaonrails/making-rails-really-restful
+
 == Setup
 
 This app was tested with Ruby EE 1.8.7, Rails 2.3.8, Restfulie 0.8.1. Run 'rake reset' to create the database and the initial set of apps.

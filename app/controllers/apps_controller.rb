@@ -1,5 +1,5 @@
 class AppsController < ApplicationController
-  include Restfulie::Server::ActionController::Base
+  restfulie
   respond_to :html, :xml, :atom, :json
 
   # respond_to :html, :xml
